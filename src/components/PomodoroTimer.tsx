@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Button } from '@/components/ui/button';
-import { Play, Pause, Clock, Reset, Trash } from 'lucide-react';
+import { Play, Pause, Clock, RotateCcw, Trash } from 'lucide-react';
 
 type TimerState = 'idle' | 'running' | 'paused' | 'finished';
 
@@ -157,7 +157,7 @@ const PomodoroTimer: React.FC = () => {
         )}
         
         <Button onClick={resetTimer} variant="outline" className="border-electric-purple text-electric-purple hover:bg-electric-purple hover:text-white">
-          <Reset size={18} className="mr-1" /> {t('resetButton')}
+          <RotateCcw size={18} className="mr-1" /> {t('resetButton')}
         </Button>
       </div>
       
