@@ -94,6 +94,54 @@
     filter: brightness(1.5);
     animation: pulse-light 2s infinite;
   }
+  
+  /* Rocket animation styles */
+  .rocket-animation {
+    z-index: 50;
+    will-change: transform, opacity;
+  }
+  
+  .rocket-trail {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 100px;
+  }
+  
+  .trail-particle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, rgba(255, 165, 0, 0.8), rgba(255, 69, 0, 0.4));
+    animation: fadeOut 1s ease-out forwards, fall 1s ease-out forwards;
+  }
+  
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  @keyframes fall {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(100px) scale(0.5); }
+  }
+  
+  /* Calendar animation styles */
+  .calendar-svg {
+    filter: drop-shadow(0 0 10px rgba(30, 174, 219, 0.3));
+  }
+  
+  /* Pomodoro timer styles */
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+  
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 }
 
 /* Custom scrollbar */

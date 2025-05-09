@@ -8,7 +8,7 @@ const projectImages = {
   car: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80",
   prosthetic: "https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?auto=format&fit=crop&w=1000&q=80",
   energy: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80",
-  team: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80"
+  printer3d: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80"
 };
 
 const Projects: React.FC = () => {
@@ -52,7 +52,7 @@ const Projects: React.FC = () => {
             <ProjectCard 
               title={t('project4Title')}
               description={t('project4Desc')}
-              imageSrc={projectImages.team}
+              imageSrc={projectImages.printer3d}
             />
           </div>
         </div>

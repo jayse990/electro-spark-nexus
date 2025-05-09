@@ -27,8 +27,14 @@ const Navigation: React.FC = () => {
           <Link to="/" className={`${location.pathname === '/' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
             {t('home')}
           </Link>
+          <Link to="/events" className={`${location.pathname === '/events' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
+            {t('events')}
+          </Link>
           <Link to="/projects" className={`${location.pathname === '/projects' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
             {t('projects')}
+          </Link>
+          <Link to="/library" className={`${location.pathname === '/library' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
+            {t('library')}
           </Link>
           <Link to="/contact" className={`${location.pathname === '/contact' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
             {t('contact')}
