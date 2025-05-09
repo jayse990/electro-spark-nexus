@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 const AnimatedBackground: React.FC = () => {
   useEffect(() => {
-    // Create circuit and particle animations here if needed
+    // Create circuit and particle animations
     const handleMouseMove = (event: MouseEvent) => {
       const x = event.clientX / window.innerWidth;
       const y = event.clientY / window.innerHeight;
@@ -20,7 +20,10 @@ const AnimatedBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 tech-bg">
+    <div className="fixed inset-0 -z-10 tech-bg overflow-hidden">
+      <div className="absolute inset-0 bg-electric-dark opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-electric-dark via-electric-dark to-electric-purple/20"></div>
+      
       <svg className="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
         {/* Circuit paths */}
         <path className="circuit-path animate-circuit-flow" stroke="#1EAEDB" strokeWidth="1" fill="none" 
@@ -36,7 +39,24 @@ const AnimatedBackground: React.FC = () => {
         <circle cx="700" cy="700" r="2" fill="#8B5CF6" />
         <circle cx="200" cy="800" r="2" fill="#1EAEDB" />
         <circle cx="800" cy="200" r="2" fill="#1EAEDB" />
+        
+        {/* Additional moving particles */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <circle 
+            key={i}
+            cx={Math.random() * 1000}
+            cy={Math.random() * 1000}
+            r={Math.random() * 2 + 1}
+            fill="#1EAEDB"
+            className={`animate-float`}
+            style={{ animationDelay: `${Math.random() * 5}s` }}
+          />
+        ))}
       </svg>
+      
+      {/* Glowing orbs */}
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-electric-blue/5 filter blur-3xl"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-electric-purple/5 filter blur-3xl"></div>
     </div>
   );
 };

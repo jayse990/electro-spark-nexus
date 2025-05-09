@@ -65,7 +65,7 @@ const Library: React.FC = () => {
           <Link to="/" className="mr-4 text-white hover:text-electric-blue transition-colors">
             <ArrowLeft size={24} />
           </Link>
-          <h1 className="text-3xl md:text-5xl font-bold">
+          <h1 className="page-title">
             <span className="flex items-center">
               <span className="text-electric-blue mr-2">📚</span>
               <span className="text-electric-blue">{t('libraryTitle')}</span>

@@ -1,15 +1,21 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { Button } from './ui/button';
+import { Menu, X } from 'lucide-react';
 
 const Navigation: React.FC = () => {
   const { t, language, setLanguage } = useLanguage();
   const location = useLocation();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const toggleLanguage = () => {
     setLanguage(language === 'fr' ? 'en' : 'fr');
+  };
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
   
   return (
@@ -56,14 +62,63 @@ const Navigation: React.FC = () => {
           
           {/* Mobile menu button */}
           <div className="md:hidden text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="4" x2="20" y1="12" y2="12"/>
-              <line x1="4" x2="20" y1="6" y2="6"/>
-              <line x1="4" x2="20" y1="18" y2="18"/>
-            </svg>
+            <Button variant="ghost" onClick={toggleMobileMenu} className="p-1">
+              {mobileMenuOpen ? (
+                <X size={24} />
+              ) : (
+                <Menu size={24} />
+              )}
+            </Button>
           </div>
         </div>
       </div>
+      
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 z-40 bg-electric-dark/95 pt-20 px-6">
+          <div className="flex flex-col space-y-6 items-center">
+            <Link 
+              to="/" 
+              className={`text-xl ${location.pathname === '/' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t('home')}
+            </Link>
+            <Link 
+              to="/events" 
+              className={`text-xl ${location.pathname === '/events' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t('events')}
+            </Link>
+            <Link 
+              to="/projects" 
+              className={`text-xl ${location.pathname === '/projects' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t('projects')}
+            </Link>
+            <Link 
+              to="/library" 
+              className={`text-xl ${location.pathname === '/library' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t('library')}
+            </Link>
+            <Link 
+              to="/contact" 
+              className={`text-xl ${location.pathname === '/contact' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t('contact')}
+            </Link>
+            
+            <Button className="mt-4 bg-electric-blue hover:bg-electric-purple text-white w-full">
+              {t('joinButton')}
+            </Button>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
