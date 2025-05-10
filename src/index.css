@@ -61,6 +61,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -72,7 +73,7 @@
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-lg bg-white/10 border border-white/20 rounded-xl shadow-lg;
+    @apply backdrop-blur-lg bg-white/5 border border-white/10 rounded-xl shadow-lg;
   }
   
   .tech-bg {
@@ -81,9 +82,13 @@
     linear-gradient(45deg, rgba(139, 92, 246, 0.05) 0%, rgba(30, 174, 219, 0.05) 100%);
   }
   
+  .constellation-bg {
+    background-color: #000;
+  }
+  
   /* Responsive title sizes for avoiding overflow */
   .page-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold;
     max-width: 100%;
     line-height: 1.2;
   }
@@ -178,14 +183,37 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(26, 31, 44, 0.5);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(139, 92, 246, 0.5);
+  background: rgba(30, 174, 219, 0.5);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(30, 174, 219, 0.7);
+  background: rgba(139, 92, 246, 0.7);
+}
+
+/* Animation pour les titres dégradés comme sur le site référence */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-text {
+  @apply font-bold;
+  background: linear-gradient(90deg, #4B96FF, #7E5DF9);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-shift 5s ease infinite;
 }

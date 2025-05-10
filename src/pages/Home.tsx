@@ -13,8 +13,8 @@ const Home: React.FC = () => {
       
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h1 className="text-3xl md:text-5xl font-bold animate-fade-in opacity-0" style={{animationDelay: '0.3s'}}>
-            <span className="text-electric-blue">{t('welcome')}</span> {t('clubName')}
+          <h1 className="gradient-text page-title animate-fade-in opacity-0" style={{animationDelay: '0.3s'}}>
+            {t('welcome')} {t('clubName')}
           </h1>
           
           <div className="mt-4 text-lg md:text-xl text-gray-300 animate-fade-in opacity-0" style={{animationDelay: '0.6s'}}>
