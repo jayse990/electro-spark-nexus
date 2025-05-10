@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         {/* Hero Section with Welcome Lightbulb */}
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col items-center text-center mb-6">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
+            <h1 className="md:text-6xl lg:text-7xl mb-6 gradient-text text-3xl font-semibold">
               {language === 'fr' ? 'Bienvenue au Club SGEER' : 'Welcome to SGEER Club'}
             </h1>
             
