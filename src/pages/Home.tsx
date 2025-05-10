@@ -74,11 +74,11 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          {/* Bottom Banner Image (requested by user) */}
+          {/* Bottom Banner Image (with new uploaded image) */}
           <div className="mt-16 rounded-xl overflow-hidden">
             <div className="w-full flex justify-center">
               <img 
-                src="/sgeer-banner.jpg" 
+                src="/lovable-uploads/44214f27-b270-4756-9af8-d244a1a4ceab.png" 
                 alt="SGEER Club Banner" 
                 className="w-full max-w-5xl h-auto object-cover rounded-lg shadow-lg"
               />
