@@ -21,14 +21,14 @@ const AnimatedBackground: React.FC = () => {
     // Generate constellation points
     const generatePoints = () => {
       const newPoints = [];
-      const count = Math.min(window.innerWidth / 15, 100); // Responsive point count
+      const count = Math.min(window.innerWidth / 20, 80); // Less points for clearer visualization
       
       for (let i = 0; i < count; i++) {
         newPoints.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
-          vx: (Math.random() - 0.5) * 0.2,
-          vy: (Math.random() - 0.5) * 0.2,
+          vx: (Math.random() - 0.5) * 0.15,
+          vy: (Math.random() - 0.5) * 0.15,
         });
       }
       
@@ -98,10 +98,12 @@ const AnimatedBackground: React.FC = () => {
             const dx = point.x - point2.x;
             const dy = point.y - point2.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
-            const maxDistance = Math.min(window.innerWidth, window.innerHeight) / 5;
+            const maxDistance = Math.min(window.innerWidth, window.innerHeight) / 4;
             
             if (distance < maxDistance) {
               const opacity = 1 - distance / maxDistance;
+              const animationDelay = `${(i + j) % 8}s`; // Staggered animation
+              
               return (
                 <line 
                   key={`line-${i}-${j}`}
@@ -109,8 +111,10 @@ const AnimatedBackground: React.FC = () => {
                   y1={point.y} 
                   x2={point2.x} 
                   y2={point2.y} 
-                  stroke={`rgba(75, 150, 255, ${opacity * 0.15})`}
-                  strokeWidth="0.5"
+                  stroke={`rgba(75, 150, 255, ${opacity * 0.4})`}
+                  strokeWidth="0.7"
+                  className="line-animation"
+                  style={{ animationDelay }}
                 />
               );
             }
@@ -124,8 +128,9 @@ const AnimatedBackground: React.FC = () => {
             key={`point-${i}`}
             cx={point.x} 
             cy={point.y} 
-            r={Math.random() * 1.5 + 0.5} 
+            r={Math.random() * 1.2 + 0.3} 
             fill={Math.random() > 0.8 ? '#1EAEDB' : '#8B5CF6'} 
+            opacity={0.7}
             className="animate-pulse"
             style={{ animationDuration: `${Math.random() * 3 + 2}s` }}
           />

@@ -8,6 +8,13 @@ const Lightbulb: React.FC = () => {
   
   const toggleLight = () => {
     setIsLit(!isLit);
+    
+    // Auto-hide the welcome message after 3 seconds
+    if (!isLit) {
+      setTimeout(() => {
+        setIsLit(false);
+      }, 3000);
+    }
   };
   
   return (
@@ -26,6 +33,7 @@ const Lightbulb: React.FC = () => {
           strokeWidth="2" 
           strokeLinecap="round" 
           strokeLinejoin="round"
+          className={isLit ? "lightbulb-glow" : ""}
         >
           <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
           <path d="M9 18h6" />
@@ -35,7 +43,7 @@ const Lightbulb: React.FC = () => {
       
       {isLit && (
         <div className="mt-4 animate-scale-in glass-card p-4 text-white max-w-xs text-center">
-          {t('lightMessage')}
+          <p className="text-yellow-300 font-medium">Bienvenue à bord !</p>
         </div>
       )}
     </div>

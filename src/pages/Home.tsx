@@ -2,7 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedBackground from '../components/AnimatedBackground';
-import WelcomeRocket from '../components/WelcomeRocket';
+import Lightbulb from '../components/Lightbulb';
 
 const Home: React.FC = () => {
   const { language, t } = useLanguage();
@@ -12,18 +12,20 @@ const Home: React.FC = () => {
       <AnimatedBackground />
       
       <div className="container mx-auto px-4 py-16">
-        {/* Hero Section with Welcome Rocket */}
+        {/* Hero Section with Welcome Lightbulb */}
         <div className="max-w-5xl mx-auto">
-          <div className="flex items-center gap-3 mb-3">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 gradient-text">
+          <div className="flex flex-col items-center text-center mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 gradient-text">
               {language === 'fr' ? 'Bienvenue au Club SGEER' : 'Welcome to SGEER Club'}
             </h1>
-            <WelcomeRocket />
+            
+            <p className="text-xl md:text-2xl text-blue-300 mb-8">
+              {language === 'fr' ? 'Sciences, Génie Électrique et Énergies Renouvelables' : 'Sciences, Electrical Engineering and Renewable Energy'}
+            </p>
+            
+            {/* Centered Lightbulb */}
+            <Lightbulb />
           </div>
-          
-          <p className="text-xl md:text-2xl text-blue-300 mb-16">
-            {language === 'fr' ? 'Sciences, Génie Électrique et Énergies Renouvelables' : 'Sciences, Electrical Engineering and Renewable Energy'}
-          </p>
           
           {/* Main Content Section with Two Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
