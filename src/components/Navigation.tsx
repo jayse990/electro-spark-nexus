@@ -31,19 +31,19 @@ const Navigation: React.FC = () => {
         
         <div className="hidden md:flex items-center space-x-6">
           <Link to="/" className={`${location.pathname === '/' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
-            {t('home')}
+            {language === 'fr' ? 'Accueil' : 'Home'}
           </Link>
           <Link to="/events" className={`${location.pathname === '/events' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
-            {t('events')}
+            {language === 'fr' ? 'Événements' : 'Events'}
           </Link>
           <Link to="/projects" className={`${location.pathname === '/projects' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
-            {t('projects')}
+            {language === 'fr' ? 'Projets' : 'Projects'}
           </Link>
           <Link to="/library" className={`${location.pathname === '/library' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
-            {t('library')}
+            {language === 'fr' ? 'Bibliothèque' : 'Library'}
           </Link>
           <Link to="/contact" className={`${location.pathname === '/contact' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}>
-            {t('contact')}
+            {language === 'fr' ? 'Contact' : 'Contact'}
           </Link>
         </div>
         
@@ -56,9 +56,11 @@ const Navigation: React.FC = () => {
             {language === 'fr' ? '🇫🇷' : '🇬🇧'}
           </Button>
           
-          <Button className="hidden md:flex bg-electric-blue hover:bg-electric-purple text-white">
-            {t('joinButton')}
-          </Button>
+          <Link to="/contact">
+            <Button className="hidden md:flex bg-electric-blue hover:bg-electric-purple text-white">
+              {language === 'fr' ? 'Rejoindre notre club' : 'Join our club'}
+            </Button>
+          </Link>
           
           {/* Mobile menu button */}
           <div className="md:hidden text-white">
@@ -82,40 +84,42 @@ const Navigation: React.FC = () => {
               className={`text-xl ${location.pathname === '/' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('home')}
+              {language === 'fr' ? 'Accueil' : 'Home'}
             </Link>
             <Link 
               to="/events" 
               className={`text-xl ${location.pathname === '/events' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('events')}
+              {language === 'fr' ? 'Événements' : 'Events'}
             </Link>
             <Link 
               to="/projects" 
               className={`text-xl ${location.pathname === '/projects' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('projects')}
+              {language === 'fr' ? 'Projets' : 'Projects'}
             </Link>
             <Link 
               to="/library" 
               className={`text-xl ${location.pathname === '/library' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('library')}
+              {language === 'fr' ? 'Bibliothèque' : 'Library'}
             </Link>
             <Link 
               to="/contact" 
               className={`text-xl ${location.pathname === '/contact' ? 'text-electric-blue' : 'text-gray-300'} hover:text-electric-blue transition-colors`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('contact')}
+              {language === 'fr' ? 'Contact' : 'Contact'}
             </Link>
             
-            <Button className="mt-4 bg-electric-blue hover:bg-electric-purple text-white w-full">
-              {t('joinButton')}
-            </Button>
+            <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="mt-4 bg-electric-blue hover:bg-electric-purple text-white w-full">
+                {language === 'fr' ? 'Rejoindre notre club' : 'Join our club'}
+              </Button>
+            </Link>
           </div>
         </div>
       )}

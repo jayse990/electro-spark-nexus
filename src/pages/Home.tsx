@@ -2,6 +2,7 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import AnimatedBackground from '../components/AnimatedBackground';
+import WelcomeRocket from '../components/WelcomeRocket';
 
 const Home: React.FC = () => {
   const { language, t } = useLanguage();
@@ -11,11 +12,14 @@ const Home: React.FC = () => {
       <AnimatedBackground />
       
       <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
+        {/* Hero Section with Welcome Rocket */}
         <div className="max-w-5xl mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 gradient-text">
-            {language === 'fr' ? 'Bienvenue au Club SGEER' : 'Welcome to SGEER Club'}
-          </h1>
+          <div className="flex items-center gap-3 mb-3">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-2 gradient-text">
+              {language === 'fr' ? 'Bienvenue au Club SGEER' : 'Welcome to SGEER Club'}
+            </h1>
+            <WelcomeRocket />
+          </div>
           
           <p className="text-xl md:text-2xl text-blue-300 mb-16">
             {language === 'fr' ? 'Sciences, Génie Électrique et Énergies Renouvelables' : 'Sciences, Electrical Engineering and Renewable Energy'}
@@ -24,7 +28,7 @@ const Home: React.FC = () => {
           {/* Main Content Section with Two Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
             {/* À Propos de Nous */}
-            <div className="glass-card bg-opacity-10 p-8 rounded-lg border border-blue-500/20">
+            <div className="glass-card bg-opacity-10 p-8 rounded-lg border border-blue-500/20 bg-gradient-to-br from-electric-blue/10 to-electric-purple/10">
               <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-blue-400">
                 {language === 'fr' ? 'À Propos de Nous' : 'About Us'}
               </h2>
@@ -39,7 +43,7 @@ const Home: React.FC = () => {
             </div>
             
             {/* Notre Mission */}
-            <div className="glass-card bg-opacity-10 p-8 rounded-lg border border-purple-500/20">
+            <div className="glass-card bg-opacity-10 p-8 rounded-lg border border-purple-500/20 bg-gradient-to-br from-electric-purple/10 to-electric-blue/10">
               <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-purple-400">
                 {language === 'fr' ? 'Notre Mission' : 'Our Mission'}
               </h2>
@@ -53,9 +57,9 @@ const Home: React.FC = () => {
             </div>
           </div>
           
-          {/* Banner Image Section */}
+          {/* Banner Image Section (matching the reference site) */}
           <div className="mt-16 rounded-xl overflow-hidden">
-            <div className="tech-banner relative">
+            <div className="tech-banner relative h-80">
               <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-10"></div>
               <div className="absolute left-8 bottom-8 z-20 max-w-md">
                 <h2 className="text-3xl font-bold mb-2 text-white">
@@ -65,6 +69,17 @@ const Home: React.FC = () => {
                   {language === 'fr' ? 'Ensemble, innovons pour un avenir meilleur' : 'Together, let\'s innovate for a better future'}
                 </p>
               </div>
+            </div>
+          </div>
+          
+          {/* Bottom Banner Image (requested by user) */}
+          <div className="mt-16 rounded-xl overflow-hidden">
+            <div className="w-full flex justify-center">
+              <img 
+                src="/sgeer-banner.jpg" 
+                alt="SGEER Club Banner" 
+                className="w-full max-w-5xl h-auto object-cover rounded-lg shadow-lg"
+              />
             </div>
           </div>
         </div>

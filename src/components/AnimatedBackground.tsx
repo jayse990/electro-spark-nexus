@@ -1,8 +1,10 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 
 const AnimatedBackground: React.FC = () => {
   const [points, setPoints] = useState<{x: number, y: number, vx: number, vy: number}[]>([]);
+  const animationFrameRef = useRef<number>();
+  const svgRef = useRef<SVGSVGElement>(null);
   
   useEffect(() => {
     // Create circuit and particle animations
@@ -35,6 +37,38 @@ const AnimatedBackground: React.FC = () => {
     
     generatePoints();
     
+    // Animation function for moving points
+    const animate = () => {
+      setPoints(prevPoints => 
+        prevPoints.map(point => {
+          // Move points
+          let newX = point.x + point.vx;
+          let newY = point.y + point.vy;
+          
+          // Bounce off edges
+          if (newX < 0 || newX > window.innerWidth) {
+            point.vx = -point.vx;
+            newX = point.x;
+          }
+          if (newY < 0 || newY > window.innerHeight) {
+            point.vy = -point.vy;
+            newY = point.y;
+          }
+          
+          return {
+            ...point,
+            x: newX,
+            y: newY
+          };
+        })
+      );
+      
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+    
+    // Start animation
+    animationFrameRef.current = requestAnimationFrame(animate);
+    
     // Handle resize
     const handleResize = () => {
       generatePoints();
@@ -45,6 +79,9 @@ const AnimatedBackground: React.FC = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
     };
   }, []);
 
@@ -54,7 +91,7 @@ const AnimatedBackground: React.FC = () => {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-black to-electric-dark/40"></div>
       
       {/* Constellation SVG */}
-      <svg className="w-full h-full opacity-70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <svg ref={svgRef} className="w-full h-full opacity-70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         {/* Draw lines between points that are close enough */}
         {points.map((point, i) => 
           points.slice(i + 1).map((point2, j) => {
